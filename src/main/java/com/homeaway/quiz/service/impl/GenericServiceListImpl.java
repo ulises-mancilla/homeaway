@@ -10,34 +10,29 @@ import com.homeaway.quiz.service.GenericServiceList;
 public  class GenericServiceListImpl<T> implements GenericServiceList {
 
 	
-	private Object[] elements;
-	private int size;
-	private static final int DEFAULT= 10;
-    private static final Object[] EMPTY = {};  
-
-   
-    
+	private List<T> elements;
+	private int size;    
     
     public GenericServiceListImpl(int initialCapacity) {
         if (initialCapacity > 0) {
-            this.elements = new Object[initialCapacity];
+            this.elements = new ArrayList<T>(initialCapacity);
         } else if (initialCapacity == 0) {
-            this.elements = EMPTY;
+            this.elements = new ArrayList<T>();;
         } 
     }
     public GenericServiceListImpl() {
-        this.elements = EMPTY;
+        this.elements = null;
     }
     
 	
 	
 	public T get(int i) {
-		return (T) elements[i];
+		return elements.get(i);
 	}
 
 	
 	public void add(Object t) {
-		 elements[size++] = t;
+		 elements.add((T) t);
 		
 	}
 
